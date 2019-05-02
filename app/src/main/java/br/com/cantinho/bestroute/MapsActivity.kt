@@ -156,17 +156,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             // show riders
                             listOfRiders.forEach {
                                 if(it.isCatch == false) {
-                                    val riderLocation = LatLng(it.latitude!!, it.longitude!!)
+                                    val riderLocation = LatLng(it.location!!.latitude!!, it.location!!.longitude!!)
                                     mMap.addMarker(
                                         MarkerOptions().position(riderLocation)
                                             .title(it.name)
                                             .snippet(it.description)
                                             .icon(BitmapDescriptorFactory.fromResource(it.image!!)))
-
-                                    val riderLoc = Location(it.name)
-                                    riderLoc.latitude = riderLocation.latitude
-                                    riderLoc.longitude = riderLocation.longitude
-                                    if(myLocation!!.distanceTo(riderLoc) < 2) {
+                                    if(myLocation!!.distanceTo(it.location) < 2) {
                                         it.isCatch = true
                                         Toast.makeText(applicationContext,
                                             "You catch new rider: " +it.name,
