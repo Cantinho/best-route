@@ -9,7 +9,7 @@ class Rider {
     var image:Int? = null
     var power:Double = 10.0
     var location: Location? = null
-    var isCatch:Boolean? =  false
+    var isCatch:Boolean? =  true
     constructor(name:String, description:String, image:Int, power:Double = 10.0, latitude:Double, longitude:Double) {
         this.name = name
         this.description = description
@@ -18,7 +18,6 @@ class Rider {
         location = Location(name)
         location!!.latitude = latitude
         location!!.longitude = longitude
-        this.isCatch = false
     }
 
 }
